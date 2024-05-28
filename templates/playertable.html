@@ -1,0 +1,62 @@
+{% extends 'navbar.html' %}
+{% block title %}
+admin
+{% endblock title %}
+
+{% block body %}
+
+{% if (session['player'] == True) %}
+<h1 align="center"><U>PLAYER DATA</u></h1>
+    {% if (session['logged_in'] == True) %}
+        <p align="right"><a href="/dataplayer/insert"><button align="right">Insert</button></a></p>
+    {% endif %}
+    
+<table  style="width:100%" class="table table-bordered">
+        <tr>
+            <th>Player Id</th>
+            <th>image</th>
+            <th>Player Name</th>
+            <th>Team Name</th>
+            <th>age</th>
+            <th>No Of T-20</th>
+            <th>playing Role</th>
+            <th>Batting Style</th>
+            <th>Average</th>
+            <th>Total Run</th>
+            <th>Strick Rate</th>
+            <th>Fifty/Hundrand</th>
+            <th>Bowling Type</th>
+            <th>no of wicket</th>
+            <th>Econamy</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+{% for player1 in player2 %}
+<tr>
+    <td>{{player1.player_id}}</td>
+    <td><img src="{{player1.player_img}}" alt="larry" width="120" height="120" ></td>
+    <td>{{player1.player_name}}</td>
+    <td>{{player1.team_name}}</td>
+    <td>{{player1.age}}</td>
+    <td>{{player1.no_of_t20}}</td>
+    <td>{{player1.playing_role}}</td>
+    <td>{{player1.batting_style}}</td>
+    <td>{{player1.avg}}</td>
+    <td>{{player1.total_runs}}</td>
+    <td>{{player1.sr}}</td>
+    <td>{{player1.fifty_hundrand}}</td>
+    <td>{{player1.bowling_type}}</td>
+    <td>{{player1.no_of_wicket}}</td>
+    <td>{{player1.economy}}</td>
+    {% if (session['logged_in'] == True) %}
+    <td><a href="/dataplayer/{{player1.player_id}}/update"><button>update</button></a></td>
+
+    <td><a href="/dataplayer/{{player1.player_id}}/delete"><button>delete</button></a></td>
+    {% endif %}
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+    
+{% endblock body %}

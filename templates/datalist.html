@@ -1,0 +1,301 @@
+{% extends 'navbar.html' %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+
+<h1>datalist</h1>
+{% if (session['coach'] == True) %}
+<h1 align="center"><U>COACH DATA</u></h1>
+{% if (session['logged_in'] == True) %}
+    <p align="right"><a href="/data/insert"><button align="right">Insert</button></a></p>
+{% endif %}
+
+<table  style="width:100%" class="table table-bordered">
+    <tr>
+        <th>Coach Id</th>
+        <th>Image</th>
+        <th>Coach Name</th>
+        <th>role</th>
+        <th>Team name</th>
+        <th>update</th>
+        <th>delete</th>
+    </tr>
+{% for coach1 in coach2 %}
+    <tr>
+        <td>{{coach1.coach_id}}</td>
+        <td><img src="{{coach1.img}}" alt=""  width="200" height="200"></td>
+        <td>{{coach1.c_name}}</td>
+        <td>{{coach1.role}}</td>
+        <td>{{coach1.team_name}}</td>
+        {% if (session['logged_in'] == True) %}
+        <td align="center"><a href="/data/{{coach1.coach_id}}/update"><button>Edit</button></a></td>
+        <td align="center"><a href="/data/{{coach1.coach_id}}/delete"><button>Delete</button></a></td>
+        {% endif %}
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+<!-- ................................................................................................................................................ -->
+{% if (session['captain'] == True) %}
+<h1 align="center"><U>CAPTAIN DATA</u></h1>
+    {% if (session['logged_in'] == True) %}
+        <p align="right"><a href='/datacaptain/insert'><button align="right">Insert</button></a></p>
+    {% endif %}
+    
+    <table  style="width:100%" class="table table-bordered">
+        <tr>
+            <th>Team Id</th>
+            <th>player Id</th>
+            <th>Team Name</th>
+            <th>Captain Name</th>
+            <th>update</th>
+            <th>delete</th>
+        </tr>
+{% for captian1 in captian2 %}
+<tr>
+    <td>{{captian1.team_id}}</td>
+    <td>{{captian1.player_id}}</td>
+    <td>{{captian1.team_name}}</td>
+    <td>{{captian1.captian_name}}</td>
+    {% if (session['logged_in'] == True) %}
+        <td align='center'><a href="/datacaptain/{{captian1.team_id}}/update"><button>Edit</button></a></td>
+        <td align="center"><a href="/datacaptain/{{captian1.team_id}}/delete"><button>Delete</button></a></td>
+    {% endif %}
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+<!-- ................................................................................................................................................. -->
+{% if (session['match'] == True) %}
+<h1 align="center"><U>MATCH DATA</u></h1>
+    {% if (session['logged_in'] == True) %}
+        <p align="right"><a href="/datamatch/insert"><button align="right">Insert</button></a></p>
+    {% endif %}
+    
+    <table  style="width:100%" class="table table-bordered">
+        <tr>
+            <th>Match Id</th>
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <th>Stadium</th>
+            <th>Date and Time</th>
+            <th>winner</th>
+            <th>losser</th>
+            <th>update</th>
+            <th>delete</th>
+        </tr>
+{% for match1 in match2 %}
+        <tr>
+            <td>{{match1.match_id}}</td>
+            <td>{{match1.t1_name}}</td>
+            <td>{{match1.t2_name}}</td>
+            <td>{{match1.stadium}}</td>
+            <td>{{match1.match_date_time}}</td>
+            <td>{{match1.winner}}</td>
+            <td>{{match1.losser}}</td>
+            {% if (session['logged_in'] == True) %}
+            <td align="center"><a href="/datamatch/{{match1.match_id}}/update"><button>Edit</button></a></td>
+            <td align="center"><a href="/datamatch/{{match1.match_id}}/delete"><button>Delete</button></a></tr>
+            {% endif %}
+        </tr>
+{% endfor %}
+</table>
+{% endif %}    
+<!-- ................................................................................................................................................. -->
+{% if (session['team'] == True) %}
+<h1 align="center"><U>TEAM DATA</u></h1>
+    {% if (session['logged_in'] == True) %}
+        <p align="right"><a href="/datateam/insert"><button align="right">Insert</button></a></p>
+    {% endif %}
+    
+    <table  style="width:100%" class="table table-bordered">
+        
+        <tr>
+            <th>Team Id</th>
+            <th>flag</th>
+            <th>Team Name</th>
+            <th>Team Rank</th>
+            <th>Caption Name</th>
+            <th>No Of Wins</th>
+            <th>No 0f losses</th>
+            <th>Wicket Keeper</th>
+            <th>players</th>
+            <th>update</th>
+            <th>delete</th>
+        </tr>
+   {% for team1 in team2 %}
+<tr>
+    <td>{{team1.team_id}}</td>
+    <td><img src="{{team1.team_img}}" alt="larry" width="100" height="100" ></td>
+    <td> {{team1.team_name}}</td>
+    <td>{{team1.team_rank}}</td>
+    <td>{{team1.captian_name}}</td>
+    <td>{{team1.no_of_wins}}</td>
+    <td>{{team1.no_of_losses}}</td>
+    <td>{{team1.wicket_keeper}}</td>
+    <td><a href="/editplayer/{{team1.team_name}}"><button>players</button></a></td>
+    {% if (session['logged_in'] == True) %}
+    <td align="center"><a href="/datateam/{{team1.team_id}}/update"><button>Edit</button></a></td>
+    <td align='center'><a href="/datateam/{{team1.team_id}}/delete"><button>Delete</button></a></td>
+</tr>
+{% endif %}
+{% endfor %}
+</table>
+{% endif %}   
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+{% if (session['team'] == True) %}
+    
+{% endif %}
+
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>datalist of coach</title>
+</head>
+<body>
+    <h1>datalist</h1>
+    {% if (session['coach'] == True) %}
+    {% for coach1 in coach2 %}
+    <h3>{{coach1.coach_id}}</h3>
+    <h3>{{coach1.c_name}}</h3>
+    <h3>{{coach1.team_name}}</h3>
+    <img src={{coach1.img}} alt="">
+    {% if (session['logged_in'] == True) %}
+    
+    <a href="/data/{{coach1.coach_id}}/update"><button>update</button></a>
+    
+    <a href="/data/{{coach1.coach_id}}/delete"><button>delete</button></a>
+    {% endif %}
+    <hr>
+    {% endfor %}
+    {% if (session['logged_in'] == True) %}
+    
+    <br><a href="/data/insert"><button>insert1</button></a>
+    {% endif %}
+    {% endif %}
+   <!-- ................................................................................................................................................ -->
+    {% if (session['captain'] == True) %}
+    {% for captian1 in captian2 %}
+    <h3>{{captian1.team_id}}</h3>
+    <h3>{{captian1.player_id}}</h3>
+    <h3>{{captian1.team_name}}</h3>
+    <h3>{{captian1.captian_name}}</h3>
+
+    {% if (session['logged_in'] == True) %}
+    <a href="/datacaptain/{{captian1.team_id}}/update"><button>update</button></a>
+    
+    <a href="/datacaptain/{{captian1.team_id}}/delete"><button>delete</button></a>
+    {% endif %}
+    <hr>
+    {% endfor %}
+    {% if (session['logged_in'] == True) %}
+    
+    <br><a href="/datacaptain/insert"><button>insert2</button></a>
+    {% endif %}
+    {% endif %}
+<!-- ................................................................................................................................................. -->
+    {% if (session['match'] == True) %}
+    {% for match1 in match2 %}
+    <h3>{{match1.match_id}}</h3>
+    <h3>{{match1.t1_name}}</h3>
+    <h3>{{match1.t2_name}}</h3>
+    <h3>{{match1.stadium}}</h3>
+    <h3>{{match1.match_date_time}}</h3>
+    <h3>{{match1.winner}}</h3>
+    <h3>{{match1.losser}}</h3>
+
+    {% if (session['logged_in'] == True) %}
+    <a href="/datamatch/{{match1.match_id}}/update"><button>update</button></a>
+    
+    <a href="/datamatch/{{match1.match_id}}/delete"><button>delete</button></a>
+    {% endif %}
+    <hr>
+    {% endfor %}
+    {% if (session['logged_in'] == True) %}
+    
+    <br><a href="/datamatch/insert"><button>insert3</button></a>
+    {% endif %}
+    {% endif %}    
+<!-- ................................................................................................................................................. -->
+    {% if (session['team'] == True) %}
+    {% for team1 in team2 %}
+    <h3>{{team1.team_id}}</h3>
+    <h3>{{team1.team_name}}</h3>
+    <h3>{{team1.team_rank}}</h3>
+    <h3>{{team1.captian_name}}</h3>
+    <h3>{{team1.no_of_wins}}</h3>
+    <h3>{{team1.no_of_losses}}</h3>
+    <h3>{{team1.wicket_keeper}}</h3>
+
+    {% if (session['logged_in'] == True) %}
+    <a href="/datateam/{{team1.team_id}}/update"><button>update</button></a>
+    
+    <a href="/datateam/{{team1.team_id}}/delete"><button>delete</button></a>
+    {% endif %}
+    <hr>
+    {% endfor %}
+    {% if (session['logged_in'] == True) %}
+    
+    <br><a href="/datateam/insert"><button>insert4</button></a>
+    {% endif %}
+    {% endif %}   
+    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    {% if (session['player'] == True) %}
+    {% for player1 in player2 %}
+    <h3>{{player1.player_id}}</h3>
+    <h3>{{player1.team_name}}</h3>
+    <h3>{{player1.player_name}}</h3>
+    <h3>{{player1.age}}</h3>
+    <h3>{{player1.no_of_t20}}</h3>
+    <h3>{{player1.playing_role}}</h3>
+    <h3>{{player1.batting_style}}</h3>
+    <h3>{{player1.avg}}</h3>
+    <h3>{{player1.total_runs}}</h3>
+    <h3>{{player1.sr}}</h3>
+    <h3>{{player1.fifty_hundrand}}</h3>
+    <h3>{{player1.bowling_type}}</h3>
+    <h3>{{player1.no_of_wicket}}</h3>
+    <h3>{{player1.economy}}</h3>
+
+
+    {% if (session['logged_in'] == True) %}
+    <a href="/dataplayer/{{player1.player_id}}/update"><button>update</button></a>
+
+    <a href="/dataplayer/{{player1.player_id}}/delete"><button>delete</button></a>
+    {% endif %}
+    <hr>
+    {% endfor %}
+    {% if (session['logged_in'] == True) %}
+
+    <br><a href="/dataplayer/insert"><button>insert5</button></a>
+    {% endif %}
+    {% endif %}   
+
+</body>
+</html>

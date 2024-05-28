@@ -1,0 +1,117 @@
+{% extends 'navbar.html' %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+<body class="vh-100" style="text-align: center; background-color: #474f5c;">
+    <div class="card shadow-2-strong card-body p-5 " style="width:40%; margin-left:30%; margin-top: 10%;" >
+    <h2>
+{% if (session['coach'] == True) %}
+<form action='' method="post">
+    Click YES to Confirm
+    <input type = "submit" value="YES"><br>
+    <a href='/data'>Cancel</a>
+</form>
+{% endif %}
+
+
+{% if (session['captain'] == True) %}
+<form action='' method="post">
+    Click YES to Confirm
+    <input type = "submit" value="YES"><br>
+    <a href='/datacaptain'>Cancel</a>
+</form>
+{% endif %}
+
+{% if (session['match'] == True) %}
+<form action='' method="post">
+    Click YES to confirm
+    <input type = "submit" value="YES"><br>
+    <a href='/datamatch'>Cancel</a>
+</form>
+{% endif %}
+
+{% if (session['team'] == True) %}
+<form action='' method="post">
+    Click YES to confirm
+    <input type = "submit" value="YES"><br>
+    <a href='/datateam'>Cancel</a>
+</form>
+{% endif %}
+
+{% if (session['player'] == True) %}
+<form action='' method="post">
+    Click YES to confirm
+    <input type = "submit" value="YES" ><br>
+    <a href="/editplayer/{{player1.team_name}}">Cancel</a>
+</form>
+{% endif %}</h2></div>
+</body>
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete</title>
+</head>
+<body>
+    {% if (session['coach'] == True) %}
+    <form action='' method="post">
+        Click YES to confirm
+        <input type = "submit" value="YES">
+        <a href='/data'>Cancel</a>
+    </form>
+    {% endif %}
+
+
+    {% if (session['captain'] == True) %}
+    <form action='' method="post">
+        Click YES to confirm
+        <input type = "submit" value="YES">
+        <a href='/datacaptain'>Cancel</a>
+    </form>
+    {% endif %}
+
+    {% if (session['match'] == True) %}
+    <form action='' method="post">
+        Click YES to confirm
+        <input type = "submit" value="YES">
+        <a href='/datamatch'>Cancel</a>
+    </form>
+    {% endif %}
+
+    {% if (session['team'] == True) %}
+    <form action='' method="post">
+        Click YES to confirm
+        <input type = "submit" value="YES">
+        <a href='/datateam'>Cancel</a>
+    </form>
+    {% endif %}
+
+    {% if (session['player'] == True) %}
+    <form action='' method="post">
+        Click YES to confirm
+        <input type = "submit" value="YES">
+        <a href='/dataplayer'>Cancel</a>
+    </form>
+    {% endif %}
+</body>
+</html>

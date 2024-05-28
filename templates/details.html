@@ -1,0 +1,75 @@
+
+
+{% extends 'navbar.html' %}
+
+{% block title %} 
+ t1_name vs t2_name 
+{% endblock title %} 
+
+{% block body %}
+<body>
+<div class="row " style="position:fixed; width:100%; margin-left:2px; " >
+<h1 align="center">{{match1.t1_name}} vs {{match1.t2_name}}</h1>
+<div class="card mb-3" style="background-color: #fff8b7;">
+  <div class="row g-0">
+    <div class="col-md-2">
+        {% for i in team1 %}
+          {% if i.team_name == match1.t1_name  %}
+            <img src="{{i.team_img}}" class="img-fluid rounded-start"  align="right" alt="left" width="100" height="100" >
+            <a href="/team/{{match1.t1_name}}" style="text-decoration: none"><h4 align="right" class="text-dark">{{match1.t1_name}}</h4></a>
+          {% endif %}
+      {% endfor %}
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5><p class="card-text" align="center"><small class="text-muted" >{{match1.match_date_time}}</small></p></h5>
+      <h5 class="text-dark"><p class="card-text" align="center">{{match1.stadium}}</p></h5>
+      {% if match1.winner!='' %}
+      <h5 class="text-dark"><p class="card-text" align="center">winner of the match:{{match1.winner}}</p></h5>
+      {% endif %}
+      </div>
+    </div>
+    <div class="col-md-2">
+    {% for i in team1 %}
+    {%if i.team_name == match1.t2_name  %}
+    <img src="{{i.team_img}}" class="img-fluid rounded-start"  align="left" alt="left" width="100" height="100" >
+    <a href="/team/{{match1.t2_name}}" style="text-decoration: none"><h4 align="left" class="text-dark">{{match1.t2_name}}</h4></a>
+ 
+  {% endif %}
+  {% endfor %}
+  </div>
+</div>
+</div>
+</div>
+
+<div style="margin-top:14%;" >
+<table align="center" style="width:80%; background-color: #74d6f1; " class="table table-bordered">
+
+      <tc>
+      <th style="position:sticky;">{{match1.t1_name}}</th>
+      <th style="position:sticky;">{{match1.t2_name}}</th>
+      </tc>
+   
+      <tr>
+        <td>
+        {% for i in query1%}
+          <img src="{{i.player_img}}" class="img-fluid rounded-start"  align="left" alt="left" width="100" height="100" ><br><br>
+          <a href="/player/{{i.player_id}}" style="text-decoration:none" class="text-dark"><h4 id="list-item-1" align="left">{{i.player_name}}</h4></a>
+          <br>
+          {% endfor %}
+        </td>
+        
+        <td>
+          {% for j in query2%}
+
+          <img src="{{j.player_img}}" class="img-fluid rounded-start"  align="left" alt="left" width="100" height="100" ><br><br> 
+          <a href="/player/{{j.player_id}}" style="text-decoration:none" class="text-dark"><h4 id="list-item-1" align="left">{{j.player_name}}</h4></a>
+          <br>
+          {% endfor %}
+        </td>
+      </tr>
+</table>
+</div>    
+    
+</body>
+{% endblock body %}

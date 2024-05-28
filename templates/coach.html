@@ -1,0 +1,20 @@
+{% extends 'navbar.html' %}
+{% block title %}
+admin
+{% endblock title %}
+
+{% block body %}
+<h3>coach</h3>
+
+
+    <h3>Id</h3>
+    <p>{{coach1.coach_id}}</p><hr>
+    <img src="{{coach1.img}}" alt="larry" width="100" height="100" ><hr>
+    <h3>Name</h3>
+    <p>{{coach1.c_name}}</p><hr>
+    <h3>Team name</h3>
+    <p>{{coach1.team_name}}</p><hr>
+    
+    
+    
+{% endblock body %}

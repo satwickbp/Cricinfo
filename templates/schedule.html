@@ -1,0 +1,143 @@
+{% extends 'navbar.html' %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+
+<body class="vh-100" style="background-color: #7b7e7b; ">
+  <!-- <div class="col sticky-top container-fluid" style="position:fixed; width:100%;margin-top:4%;  background-color: #ffffff; " >
+    <div>
+    <h1 align="center"><u>Schedule </u></h1>
+  </div>
+    <div id="list-example" class="list-group">
+      <a class="list-group-item list-group-item-action offcanvas-title" href="#completed"
+        >Completed</a>
+      <a class="list-group-item list-group-item-action offcanvas-title" href="#completed"
+        >Upcoming</a>
+      </div>
+      <hr>
+    </div> -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-sm-top bg-" style="position: fixed; width:40%; margin-top: 4%; margin-left:30%; background-color: #c6c9c0;" >
+      <div class="container-fluid">
+        <h2>Schedule</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse mx-auto" id="navbarSupportedContent" style="align-content:right;">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto" style="align-content:right;">
+            <li class="nav-item ">
+              <a class="nav-link active" aria-current="page" href="#completed"><h5>Completed</h5></a>
+            </li>
+            <li align="right">
+              <a class="nav-link active" href="#upcoming"><h5>Upcoming</h5></a>
+            </li>
+            
+            </ul>
+        
+        </div>
+      </div>
+    </nav>
+ 
+
+
+
+
+<div style="margin-top:5%; ">
+{% for match1 in match2 %}
+{% if current_time < match1.match_date_time %}
+
+  <h3 id="upcoming">
+    <a class="card" href="/details/{{match1.match_id}}" style="text-decoration:none">
+      <div class="col d-flex justify-content-center" style="background-color: #f1fad8;" >
+        <div class="card mb-0" style="width:90%; background-color: #ffffff;" align="center" >
+          <div class="row g-0">
+            <div class="col-md-2">
+              
+              {% for i in team1 %}
+              {%if i.team_name == match1.t1_name  %}
+              <img src="{{i.team_img}}" class="img-fluid rounded-start"  align="right" alt="left" width="100" height="100" >
+              <h4 align="right" class="text-dark">{{match1.t1_name}}</h4>
+              {% endif %}
+              {% endfor %}
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5><p class="card-text" align="center"><small class="text-muted">{{match1.match_date_time}}</small></p></h5>
+                <h5 class="text-dark"><p class="card-text" align="center">{{match1.stadium}}</p></h5>
+              </div>
+    </div>
+    <div class="col-md-2">
+      
+      {% for i in team1 %}
+      {%if i.team_name == match1.t2_name  %}
+      <img src="{{i.team_img}}" class="img-fluid rounded-start"  align="left" alt="left" width="100" height="100" >
+      <h4 align="left" class="text-dark">{{match1.t2_name}}</h4>
+      
+      {% endif %}
+      {% endfor %}
+    </div>
+</div>
+</div>
+</div>
+</a>
+</h3>
+
+{% else %}
+<h3 id="completed">
+  <a class="card margin:0 auto" href="/details/{{match1.match_id}}" style="text-decoration:none">
+    <div class="col d-flex justify-content-center" style="background-color: #f1fad8;" >
+      <div class="card mb-0 "style="width:90%; background-color: #ffffff" >
+        <div class="row g-0" >
+          <div class="col-md-2" >
+            {% for i in team1 %}
+            {% if i.team_name == match1.t1_name  %}
+            <img src="{{i.team_img}}" class="img-fluid rounded-start"  align="right" alt="left" width="100" height="100" >
+            <h4 align="right" class="text-dark">{{match1.t1_name}}</h4>
+            {% endif %}
+            {% endfor %}
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5><p class="card-text" align="center"><small class="text-muted">{{match1.match_date_time}}</small></p></h5>
+              <h5 class="text-dark"><p class="card-text" align="center">{{match1.stadium}}</p></h5>
+            </div>
+          </div>
+          <div class="col-md-2">
+            {% for i in team1 %}
+            {%if i.team_name == match1.t2_name  %}
+            <img src="{{i.team_img}}" class="img-fluid rounded-start"  align="left" alt="left" width="100" height="100" >
+            <h4 align="left" class="text-dark">{{match1.t2_name}}</h4>
+            
+            {% endif %}
+            {% endfor %}
+          </div>
+    </div>
+  </div>
+</div>
+</a>
+</h3>
+</div>
+
+{% endif %}
+{% endfor %}
+</div>
+
+
+</body>
+
+{% endblock body %}
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+

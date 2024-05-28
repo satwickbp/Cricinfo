@@ -1,0 +1,84 @@
+{% extends 'navbar.html' %} {% block title %} Team Name {% endblock title %} {%
+block body %}
+<h1 align="center"><u>{{team1.team_name}}</u></h1>
+
+<img
+  src="{{team1.team_img}}"
+  alt="larry"
+  style="margin-left: 40%; margin-right: 30%"
+  width="20%"
+  height="20%"
+/>
+
+<table class="table table-bordered" style="width: 70%" align="center">
+  <tr>
+    <th>Team Id</th>
+    <td>{{team1.team_id}}</td>
+  </tr>
+
+  <tr>
+    <th>Team Rank</th>
+    <td>{{team1.team_rank}}</td>
+  </tr>
+  <tr>
+    <th>Captain Name</th>
+    <td>{{team1.captian_name}}</td>
+  </tr>
+  <tr>
+    <th>No of Wins</th>
+    <td>{{team1.no_of_wins}}</td>
+  </tr>
+  <tr>
+    <th>No of Losses</th>
+    <td>{{team1.no_of_losses}}</td>
+  </tr>
+  <tr>
+    <th>No of Losses</th>
+    <td>{{team1.no_of_losses}}</td>
+  </tr>
+  <tr>
+    <th>Coach Name</th>
+    <td>
+      {% for j in teamquery1 %}
+      <h6>
+        <a
+          href="/coach/{{j.coach_id}}"
+          style="text-decoration: none"
+          class="text-dark"
+          ><u>{{j.c_name}}</u> ({{j.role}})</a
+        >
+      </h6>
+      <br />
+      {% endfor %}
+    </td>
+  </tr>
+</table>
+
+<h3><u>Players</u></h3>
+<div class="row row-cols-5">
+
+    {% for i in teamplayers %}
+ 
+      <a
+        href="/player/{{i.player_id}}"
+        style="text-decoration: none"
+        class="text-dark"
+      >
+      
+      
+                <div class="card" style="width: 18rem">
+                        <img src="{{i.player_img}}" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                          <h5 class="card-title">{{i.player_name}}</h5>
+                        </div>
+                 </div>
+                    </a>
+      
+      
+    
+    {% endfor %}
+</div>
+
+
+  {% endblock body %}
+

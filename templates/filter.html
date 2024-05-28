@@ -1,0 +1,55 @@
+{% extends 'navbar.html' %}
+{% block title %}
+admin
+{% endblock title %}
+
+{% block body %}
+<h1>this is filter page<h1>
+    <h1>welcome</h1>
+    <form class="mb-4" role="search" action="/filter">
+        <div class="input-group mb-3">
+        <input class="form-control me-2" name="q"type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+        </div>  
+    </form>
+      <table  style="width:100%" class="table table-bordered">
+        <tr>
+            <th>Player Id</th>
+            <th>image</th>
+            <th>Player Name</th>
+            <th>Team Name</th>
+            <th>age</th>
+            <th>No Of T-20</th>
+            <th>playing Role</th>
+            <th>Batting Style</th>
+            <th>Average</th>
+            <th>Total Run</th>
+            <th>Strick Rate</th>
+            <th>Fifty/Hundrand</th>
+            <th>Bowling Type</th>
+            <th>no of wicket</th>
+            <th>Econamy</th>
+        </tr>
+{% for player1 in teamnames %}
+<tr>
+    <td>{{player1.player_id}}</td>
+    <td><img src="{{player1.player_img}}" alt="larry" width="120" height="120" ></td>
+    <td>{{player1.player_name}}</td>
+    <td>{{player1.team_name}}</td>
+    <td>{{player1.age}}</td>
+    <td>{{player1.no_of_t20}}</td>
+    <td>{{player1.playing_role}}</td>
+    <td>{{player1.batting_style}}</td>
+    <td>{{player1.avg}}</td>
+    <td>{{player1.total_runs}}</td>
+    <td>{{player1.sr}}</td>
+    <td>{{player1.fifty_hundrand}}</td>
+    <td>{{player1.bowling_type}}</td>
+    <td>{{player1.no_of_wicket}}</td>
+    <td>{{player1.economy}}</td>
+</tr>
+{% endfor %}
+</table>
+
+    
+{% endblock body %}

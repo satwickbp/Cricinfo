@@ -1,0 +1,34 @@
+{% extends 'navbar.html' %}
+{% block title %}
+admin
+{% endblock title %}
+
+{% block body %}
+<h1>points table<h1>
+
+<table style="width:100%" class="table table-bordered">
+    <thead class="bg-info">
+    <tr>
+        <th>team symbol</th>
+        <th>team name</th>
+        <th>team rank</th>
+        <th>wins</th>
+        <th>losses</th>
+        <th>points</th>   
+    </tr>
+</thead>
+    {% for i in point %}
+    <thead class="bg-tomato">
+    <tr>
+        
+        <td><img src="{{i.team_img}}" width="50" height="50"></td>
+        <td>{{i.team_name}}</td>
+        <td>{{i.team_rank}}</td>
+        <td>{{i.no_of_wins}}</td>
+        <td>{{i.no_of_losses}}</td>
+        <td>{{2*i.no_of_wins}}</td>
+    </tr>  
+</thead>
+    {% endfor %}
+</table>
+{% endblock body %}

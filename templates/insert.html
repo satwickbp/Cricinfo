@@ -1,0 +1,498 @@
+{% extends 'navbar.html' %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+<body class="vh-100" style="background-color: #474f5c; ">
+{% if (session['coach'] == True) %}
+
+<form action='' enctype="multipart/form-data"  method = "POST">
+  
+    <div class="card shadow-2-strong card-body p-5 " style="width:60%; margin-left:20%; margin-top: 3%;" >
+      
+   
+    <h1 class="mb-5" align="center">Insert</h1>
+    <table align="center" style="width:60% " height="400" >
+        <tr>
+            <th><h3>coach id</h3></th> 
+            <td>
+            <input type = "text" name = "coach_id"  />
+            </td>
+          </tr>
+      <tr>
+      <th><h3>coach name</h3></th> 
+      <td>
+      <input type = "text" name = "c_name"  />
+      </td>
+    </tr>
+    <tr>
+      <th><h3><label for="team_name">team name</label></h3><th>
+      </td>
+        <select name="team_name" >
+        
+          <option name="team_name" value=""></option>
+          {% for i in teamnames %}
+         
+          <option name="team_name" value="{{i.team_name}}">{{i.team_name}}</option>
+          {% endfor %} 
+        </select>
+      </td>
+    </tr>
+      <tr>
+        <th><h3>role</h3></th>
+        <td>
+        <select name="role" >
+          <option name="role" value=""></option>
+          <option name="role" value="head coach">head coach</option>
+          <option name="role" value="batting coach">batting coach</option>
+          <option name="role" value="bowling coach">bowling coach</option>
+          <option name="role" value="Fielding coach">Fielding coach</option>
+        </select>
+      </td>
+    </tr>
+  
+      <tr>
+        <th><h3>image</h3></th>
+        <td>
+        <input type = "text" name = "img" value="" />
+        </td>
+        
+      </table>
+        <input class="btn btn-primary btn-lg btn-block"  style="width:20%; margin-left: 35%;" type = "submit" value = "Submit"  />
+      </form>
+    </div>
+  </div>
+{% endif %}
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+{% if (session['captain'] == True) %}
+
+<form action='' enctype="multipart/form-data"  method = "POST">
+    
+    <div class="card shadow-2-strong card-body p-5 " style="width:60%; margin-left:20%; margin-top: 3%;" >
+      
+   
+    <h1 class="mb-5" align="center">INSERT</h1>
+    <table align="center" style="width:60% " height="400" >
+        <tr>
+            <th><h3>team id</h3></th> 
+            <td>
+            <input type = "text" name = "team_id" />
+            </td>
+          </tr>
+      <tr>
+      <th><h3>player id</h3></th> 
+      <td>
+      <input type = "text" name = "player_id" />
+      </td>
+    </tr>
+    <tr>
+      <th><h3><label for="team_name">team name</label></h3><th>
+      </td>
+        <select name="team_name" >
+        
+          <option name="team_name" value=""></option>
+          {% for i in teamnames %}
+         
+          <option name="team_name" value="{{i.team_name}}">{{i.team_name}}</option>
+          {% endfor %} 
+        </select>
+      </td>
+    
+  
+      <tr>
+        <th><h3>captain name</h3></th>
+        <td>
+        <input type = "text" name = "captian_name" />
+        </td>
+        
+      </table>
+        <input class="btn btn-primary btn-lg btn-block"  style="width:20%; margin-left: 35%;" type = "submit" value = "Submit"  />
+      </form>
+    </div>
+  </div>
+  
+
+
+{% endif %}
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------   -->
+{% if (session['match'] == True) %}
+
+
+<form action='' enctype="multipart/form-data"  method = "POST">
+  
+    <div class="card shadow-2-strong card-body p-5 " style="width:60%; margin-left:20%; margin-top: 3%;" >
+      
+   
+    <h1 class="mb-5" align="center">Insert</h1>
+    <table align="center" style="width:60% " height="400" >
+        <tr>
+            <th><h3><label for="match_id">match Id</label></h3><th>
+            </td>
+            <input type = "text" name = "match_id"/>
+            </td>
+          </tr>
+      <tr>
+        <th><h3><label for="t1_name">team 1</label></h3><th>
+        </td>
+          <select name="t1_name" >
+          
+            <option name="t1_name" value=""></option>
+            {% for i in teamnames %}
+           
+            <option name="t1_name" value="{{i.team_name}}">{{i.team_name}}</option>
+            {% endfor %} 
+          </select>
+        </td>
+      </tr>
+    <tr>
+      <th><h3><label for="t2_name">team 2</label></h3><th>
+      </td>
+        <select name="t2_name" >
+        
+          <option name="t2_name" value=""></option>
+          {% for i in teams %}
+         
+          <option name="t2_name" value="{{i.team_name}}">{{i.team_name}}</option>
+          {% endfor %} 
+        </select>
+      </td>
+    </tr>
+      <tr>
+        <th><h3> <label for="stadium">stadium</label></h3></th>
+        <td>
+         
+          <select name="stadium" >
+            <option name="stadium" value=""></option>
+            
+            <option name="stadium" value="Chinnaswamy Bengaluru">Chinnaswamy Bengaluru</option>
+            <option name="stadium" value="Eden gardens,kolkata">Eden gardens,kolkata</option>
+            <option name="stadium" value="Ferosha kotla stadium, New Delhi">Ferosha kotla stadium, New Delhi</option>
+            <option name="stadium" value="Wankhede, Mumbai">Wankhede, Mumbai</option>
+            
+          </select>
+      </td>
+    </tr>
+  
+      <tr>
+        <th><h3><label for="match_date_time">match date time</label></h3></th>
+        <td>
+          <input type = "datetime-local" name = "match_date_time"  />
+        </td>
+        </tr>
+        <tr>
+          <th><h3><label for="winner">winner</label></h3></th>
+          <td>
+            <input type = "text" name = "winner"/>
+          </td>
+        </tr>
+        <tr>
+          <th><h3><label for="losser">losser</label></h3>
+          </th>
+          <td> <input type = "text" name = "losser"/></td>
+        </tr>
+      </table>
+        <input class="btn btn-primary btn-lg btn-block"  style="width:20%; margin-left: 35%;" type = "submit" value = "Submit"  />
+      </form>
+    </div>
+  </div>
+
+
+{% endif %}
+
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------- -->
+{% if (session['team'] == True) %}
+
+
+    <form action='' enctype="multipart/form-data"  method = "POST">
+  
+        <div class="card shadow-2-strong card-body p-5 " style="width:60%; margin-left:20%; margin-top: 3%;" >
+          
+       
+        <h1 class="mb-5" align="center">Insert</h1>
+        <table align="center" style="width:60% " height="400" >
+            <tr>
+                <th><h3><label for="team_id">team Id</label></h3><th>
+                </td>
+                <input type = "text" name = "team_id"/>
+                </td>
+              </tr>
+    
+          <tr>
+            <th><h3><label for="team_name">team name</label></h3><th>
+            </td>
+            <input type = "text" name = "team_name"/>
+            </td>
+          </tr>
+        <tr>
+          <th><h3><label for="team_rank">team rank</label></h3><th>
+          </td>
+          <input type = "text" name = "team_rank"  />
+          </td>
+        </tr>
+          <tr>
+            <th><h3> <label for="captian_name">captian name</label></h3></th>
+            <td>
+             
+              <input type = "text" name = "captian_name"  />
+          </td>
+        </tr>
+      
+          <tr>
+            <th><h3><label for="no_of_wins">wins</label></h3></th>
+            <td>
+              <input type = "text" name ="no_of_wins"  />
+            </td>
+            </tr>
+            <tr>
+              <th><h3><label for="no_of_losses">losses</label></h3></th>
+              <td>
+                <input type = "text" name ="no_of_losses"  />
+              </td>
+            </tr>
+            <tr>
+              <th><h3><label for="wicket_keeper">wicket keeper</label></h3>
+              </th>
+              <td><input type = "text" name ="wicket_keeper" /></td>
+            </tr>
+            <tr>
+              <th><h3><label for="team_img">Image</label></h3>
+              </th>
+              <td><input type = "text" name ="team_img" /></td>
+            </tr>
+          </table>
+            <input class="btn btn-primary btn-lg btn-block"  style="width:20%; margin-left: 35%;" type = "submit" value = "Submit"  />
+          </form>
+        </div>
+      
+
+
+
+{% endif %}
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+{% if (session['player'] == True) %}
+
+    <form action='' enctype="multipart/form-data"  method = "POST">
+  
+        <div class="card shadow-2-strong card-body p-5 " style="width:60%; margin-left:20%; margin-top: 3%;" >
+          
+       
+        <h1 class="mb-5" align="center">Insert</h1>
+        <table align="center" style="width:60% " height="400" >
+            <tr>
+                <th><h3><label for="player_id">player Id </label></h3>
+                </th>
+                <td><input type = "text" name = "player_id" /></td>
+              </tr>
+          <tr>
+            <th><h3><label for="team_name">team name</label></h3><th>
+            </td>
+            <select name="team_name" >
+              <option name="team_name" value=""></option>
+              {% for i in teams %}
+             <option name="team_name" value="{{i.team_name}}">{{i.team_name}}</option>
+              {% endfor %} 
+            </select>
+            </td>
+          </tr>
+        <tr>
+          <th><h3><label for="player_name">player name</label></h3><th>
+          </td>
+          <input type = "text" name = "player_name"  />
+          </td>
+        </tr>
+          <tr>
+            <th><h3><label for="age">age</label></h3></th>
+            <td>
+             
+              <input type = "text" name = "age" />
+          </td>
+        </tr>
+      
+          <tr>
+            <th><h3><label for="no_of_t20">T-20</label></h3></th>
+            <td>
+              <input type = "text" name = "no_of_t20" />
+            </td>
+            </tr>
+            <tr>
+              <th><h3><label for="playing_role">Playing Role</label></h3></th>
+              <td>
+                <select name="playing_role" >
+                  <option name="playing_role" value=""></option>
+                  
+                  <option name="playing_role" value="Batsman">Batsman</option>
+                  <option name="playing_role" value="Bowler">Bowler</option>
+                  <option name="playing_role" value="All Rounder">All Ronder</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th><h3><label for="batting_style">batting style</label></h3>
+              </th>
+              <td><select name="batting_style" >
+                <option name="batting_style" value=""></option>
+                
+                <option name="batting_style" value="Right Handed">Right Handed</option>
+                <option name="batting_style" value="Left Handed">Left Handed</option>
+                
+              </select>
+              </td>
+            </tr>
+            <tr>
+              <th><h3><label for="avg">avg</label></h3>
+              </th>
+              <td><input type = "text" name = "avg"  /></td>
+            </tr>
+            <tr>
+              <th><h3><label for="total_runs">Total Runs</label></h3>
+              </th>
+              <td><input type = "text" name = "total_runs"  /></td>
+            </tr>
+            <tr>
+              <th><h3><label for="sr">strike rate</label></h3>
+              </th>
+              <td><input type = "text" name = "sr"  /></td>
+            </tr>
+            <tr>
+              <th><h3><label for="fifty_hundrand">fifty_hundrand</label></h3>
+              </th>
+              <td><input type = "text" name = "fifty_hundrand"  /></td>
+            </tr>
+            <tr>
+              <th><h3><label for="bowling_type">bowling_type</label></h3>
+              </th>
+              <td> <select name="bowling_type" >
+                <option name="bowling_type" value=""></option>
+                
+                <option name="bowling_type" value="spinner">spinner</option>
+                <option name="bowling_type" value="pacer">pacer</option>
+                
+              </select></td>
+            </tr>
+            <tr>
+              <th><h3><label for="no_of_wicket">wickets</label></h3>
+              </th>
+              <td><input type = "text" name = "no_of_wicket"  /></td>
+            </tr>
+            <tr>
+              <th><h3><label for="economy">economy</label></h3>
+              </th>
+              <td><input type = "text" name = "economy"  /></td>
+            </tr>
+            <tr>
+              <th><h3><label for="player_img">image</label></h3>
+              </th>
+              <td><input type = "text" name = "player_img" /></td>
+            </tr>
+    
+    
+          </table>
+            <input class="btn btn-primary btn-lg btn-block"  style="width:20%; margin-left: 35%;" type = "submit" value = "Submit"  />
+          </form>
+        </div>
+
+
+{% endif %}
+</body>
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insert</title>
+</head>
+<body>
+    {% if (session['coach'] == True) %}
+    <form action='' method = "POST">
+        <p>coach ID <input type = "integer" name = "coach_id" /></p>
+        <p>name <input type = "text" name = "c_name" /></p>
+        <p>team name <input type = "text" name = "team_name" /></p>
+        <p>img <input type = "text" name = "img" /></p>
+        <p><input type = "submit" value = "Submit" /></p>
+    </form>
+    {% endif %}
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    {% if (session['captain'] == True) %}
+    <form action='' method = "POST">
+        <p>team id <input type = "text" name = "team_id" /></p>
+        <p>player id <input type = "text" name = "player_id" /></p>
+        <p>team name <input type = "text" name = "team_name" /></p>
+        <p>captain name <input type = "text" name = "captian_name" /></p>
+        <p><input type = "submit" value = "Submit" /></p>
+    </form>
+    {% endif %}
+    
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------   -->
+    {% if (session['match'] == True) %}
+    <form action='' method = "POST">
+        <p>match id <input type = "text" name = "match_id" /></p>
+        <p>team 1 <input type = "text" name = "t1_name" /></p>
+        <p>team 2 <input type = "text" name = "t2_name" /></p>
+        <p>stadium<input type = "text" name = "stadium" /></p>
+        <p>match date time<input type = "text" name = "match_date_time" /></p>
+        <p>winner<input type = "text" name = "winner" /></p>
+        <p>losser<input type = "text" name = "losser" /></p>
+        <p><input type = "submit" value = "Submit" /></p>
+    </form>
+    {% endif %}
+
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------- -->
+    {% if (session['team'] == True) %}
+    <form action='' method = "POST">
+        <p>team id <input type = "text" name = "team_id" /></p>
+        <p>team name <input type = "text" name = "team_name" /></p>
+        <p>team rank <input type = "text" name = "team_rank" /></p>
+        <p>captain name<input type = "text" name = "captian_name" /></p>
+        <p>no of wins<input type = "text" name = "no_of_wins" /></p>
+        <p>no of losses<input type = "text" name = "no_of_losses" /></p>
+        <p>wicket_keeper<input type = "text" name = "wicket_keeper" /></p>
+        <p><input type = "submit" value = "Submit" /></p>
+    </form>
+    {% endif %}
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+    {% if (session['player'] == True) %}
+    <form action='' method = "POST">
+        <p>player id <input type = "text" name = "player_id" /></p>
+        <p>team name <input type = "text" name = "team_name" /></p>
+        <p>player name <input type = "text" name = "player_name" /></p>
+        <p>age<input type = "text" name = "age" /></p>
+        <p>no of t20<input type = "text" name = "no_of_t20" /></p>
+        <p>playing role<input type = "text" name = "playing_role" /></p>
+        <p>batting_style<input type = "text" name = "batting_style" /></p>
+        <p>avg <input type = "text" name = "avg" /></p>
+        <p>total runs <input type = "text" name = "total_runs" /></p>
+        <p>sr <input type = "text" name = "sr" /></p>
+        <p>fifty hundreds<input type = "text" name = "fifty_hundrand" /></p>
+        <p>bowling_type<input type = "text" name = "bowling_type" /></p>
+        <p>no of wicket<input type = "text" name = "no_of_wicket" /></p>
+        <p>economy<input type = "text" name = "economy" /></p>
+        <p><input type = "submit" value = "Submit" /></p>
+    </form>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,86 @@
+
+{% extends 'navbar.html' %}
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+
+
+<h2 align="center"> <u>Player Profile</u></h2>
+<img src="{{player1.player_img}}" alt="image" style="margin-left:40%; margin-right:40%;" width="20%" height="20%" >
+<h1 align='center'>{{player1.player_name}}</h1>
+
+    <table class="table table-bordered" style="width:70%" align="center">
+    <tr>
+        <th>Player Id</th>
+        <td>{{player1.player_id}}</td>
+    </tr>
+    <tr>
+       
+            <th>Team Name</th>
+            <td>{{player1.team_name}}</td>
+    </tr>
+    
+    <tr>
+   
+            <th>Age</th>
+            <td>{{player1.age}}</td>
+       
+    </tr>
+    <tr>
+ 
+            <th>T-20 Matches</th>
+            <td>{{player1.no_of_t20}}</td>
+    </tr>
+    <tr>
+            <th>Playing Role</th>
+            <td>{{player1.playing_role}}</td>
+    </tr>
+    
+    <tr>
+
+            <th>Batting Style</th>
+            <td>{{player1.batting_style}}</td>
+    </tr>
+    <tr>
+            <th>Avg</th>
+            <td>{{player1.avg}}</td>
+    </tr>
+    <tr>
+            <th>Total Runs</th>
+            <td>{{player1.total_runs}}</td>
+    </tr>
+    <tr>
+            <th>Strike Rate</th>
+            <td>{{player1.sr}}</td>
+
+    </tr>
+    <tr>
+        <tc>
+            <th>Fifty Hundrand</th>
+            <td>{{player1.fifty_hundrand}}</td>
+
+    </tr>
+    <tr>
+
+            <th>Bowling Type</th>
+            <td>{{player1.bowling_type}}</td>
+
+    </tr>
+    <tr>
+
+            <th>
+                Number of Wicket</th>
+            <td>{{player1.no_of_wicket}}</td>
+
+    </tr>
+    <tr>
+
+            <th>Economy</th>
+            <td>{{player1.economy}}</td>
+
+    </tr>       
+</table>
+    
+{% endblock body %}

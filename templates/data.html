@@ -1,0 +1,236 @@
+{% extends 'navbar.html' %}
+{% block title %}
+admin
+{% endblock title %}
+
+{% block body %}
+<h1>this is single data page<h1>
+    {% if (session['coach'] == True) %}
+    <h3>Id</h3>
+    <p>{{coach1.coach_id}}</p><hr>
+    <h3>img</h3>
+    <p><img src="{{coach1.img}}" alt="larry" width="100" height="100" ></p><hr>
+    <h3>Name</h3>
+    <p>{{coach1.c_name}}</p><hr>
+    <h3> role</h3>
+    <p>{{coach1.role}}</p><hr>
+    <h3>Team name</h3>
+    <p>{{coach1.team_name}}</p><hr>
+    <p align="center"><a  href="/data"><button><h4 class="text-dark">back to table</h4></botton></a></p>
+
+    {% endif %}
+<!-- --------------------------------------------------------------------------------------------------------------------------- -->
+    {% if (session['captain'] == True) %}
+    <h1>data</h1>
+    <h3>team Id</h3>
+    <p>{{captain1.team_id}}</p><hr>
+    <h3>player id</h3>
+    <p>{{captain1.player_id}}</p><hr>
+    <h3>Team name</h3>
+    <p>{{captain1.team_name}}</p><hr>
+    <h3>captain name</h3>
+    <p>{{captain1.captian_name}}</p><hr>
+    <p align="center"><a  href="/datacaptain"><button><h4 class="text-dark">back to table</h4></botton></a></p>
+
+        {% endif %}
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    {% if (session['match'] == True) %}
+    <h1>data</h1>
+    <h3>match Id</h3>
+    <p>{{match1.match_id}}</p><hr>
+    <h3>team 1</h3>
+    <p>{{match1.t1_name}}</p><hr>
+    <h3>Team 2</h3>
+    <p>{{match1.t2_name}}</p><hr>
+    <h3>stadium</h3>
+    <p>{{match1.stadium}}</p><hr>
+    <h3>match_date_time</h3>
+    <p>{{match1.match_date_time}}</p><hr>
+    <h3>winner</h3>
+    <p>{{match1.winner}}</p><hr>
+    <h3>losser</h3>
+    <p>{{match1.losser}}</p><hr>
+    <p align="center"><a  href="/datamatch"><button><h4 class="text-dark">back to table</h4></botton></a></p>
+
+    {% endif %}
+
+
+    {% if (session['team'] == True) %}
+    <h1>data</h1>
+    <h3>team Id</h3>
+    <p>{{team1.team_id}}</p><hr>
+    <h3>image</h3>
+    <img src="{{team1.team_img}}" alt="larry" width="100" height="100" >
+    <h3>team name</h3>
+    <p>{{team1.team_name}}</p><hr>
+    <h3>Team rank</h3>
+    <p>{{team1.team_rank}}</p><hr>
+    <h3>captain name</h3>
+    <p>{{team1.captian_name}}</p><hr>
+    <h3>no of wins</h3>
+    <p>{{team1.no_of_wins}}</p><hr>
+    <h3>no of losses</h3>
+    <p>{{team1.no_of_losses}}</p><hr>
+    <h3>wicket keeper</h3>
+    <p>{{team1.wicket_keeper}}</p><hr>
+    <p align="center"><a  href="/datateam"><button><h4 class="text-dark">back to table</h4></botton></a></p>
+
+    {% endif %}
+
+
+    {% if (session['player'] == True) %}
+    <h1>data</h1>
+    <h3>player Id</h3>
+    <p>{{player1.player_id}}</p><hr>
+    <h3>team name</h3>
+    <p>{{player1.team_name}}</p><hr>
+    <h3>player name</h3>
+    <p>{{player1.player_name}}</p><hr>
+    <h3>age</h3>
+    <p>{{player1.age}}</p><hr>
+    <h3>no of t20</h3>
+    <p>{{player1.no_of_t20}}</p><hr>
+    <h3>playing role</h3>
+    <p>{{player1.playing_role}}</p><hr>
+    <h3>batting style</h3>
+    <p>{{player1.batting_style}}</p><hr>
+    <h3>avg</h3>
+    <p>{{player1.avg}}</p><hr>
+    <h3>total runs</h3>
+    <p>{{player1.total_runs}}</p><hr>
+    <h3>sr</h3>
+    <p>{{player1.sr}}</p><hr>
+    <h3>fifty hundrand</h3>
+    <p>{{player1.fifty_hundrand}}</p><hr>
+    <h3>bowling type</h3>
+    <p>{{player1.bowling_type}}</p><hr>
+    <h3>no of wicket</h3>
+    <p>{{player1.no_of_wicket}}</p><hr>
+    <h3>economy</h3>
+    <p>{{player1.economy}}</p><hr>
+    <img src="{{player1.player_img}}" alt="larry" width="150" height="150" >
+    <p align="center"><a  href="/editplayer/{{player1.team_name}}"><button><h4 class="text-dark">back to table</h4></botton></a></p>
+
+    {% endif %}
+
+    
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data </title>
+</head>
+<body>
+    {% if (session['coach'] == True) %}
+    <h1>data</h1>
+    <h3>Id</h3>
+    <p>{{coach1.coach_id}}</p><hr>
+    <h3>Name</h3>
+    <p>{{coach1.c_name}}</p><hr>
+    <h3>Team name</h3>
+    <p>{{coach1.team_name}}</p><hr>
+    <h3>img</h3>
+    <p>{{coach1.img}}</p><hr>
+    {% endif %}
+<!-- --------------------------------------------------------------------------------------------------------------------------- -->
+    {% if (session['captain'] == True) %}
+    <h1>data</h1>
+    <h3>team Id</h3>
+    <p>{{captain1.team_id}}</p><hr>
+    <h3>player id</h3>
+    <p>{{captain1.player_id}}</p><hr>
+    <h3>Team name</h3>
+    <p>{{captain1.team_name}}</p><hr>
+    <h3>captain name</h3>
+    <p>{{captain1.captian_name}}</p><hr>
+    {% endif %}
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    {% if (session['match'] == True) %}
+    <h1>data</h1>
+    <h3>match Id</h3>
+    <p>{{match1.match_id}}</p><hr>
+    <h3>team 1</h3>
+    <p>{{match1.t1_name}}</p><hr>
+    <h3>Team 2</h3>
+    <p>{{match1.t2_name}}</p><hr>
+    <h3>stadium</h3>
+    <p>{{match1.stadium}}</p><hr>
+    <h3>match_date_time</h3>
+    <p>{{match1.match_date_time}}</p><hr>
+    <h3>winner</h3>
+    <p>{{match1.winner}}</p><hr>
+    <h3>losser</h3>
+    <p>{{match1.losser}}</p><hr>
+    {% endif %}
+
+
+    {% if (session['team'] == True) %}
+    <h1>data</h1>
+    <h3>team Id</h3>
+    <p>{{team1.team_id}}</p><hr>
+    <h3>team name</h3>
+    <p>{{team1.team_name}}</p><hr>
+    <h3>Team rank</h3>
+    <p>{{team1.team_rank}}</p><hr>
+    <h3>captain name</h3>
+    <p>{{team1.captian_name}}</p><hr>
+    <h3>no of wins</h3>
+    <p>{{team1.no_of_wins}}</p><hr>
+    <h3>no of losses</h3>
+    <p>{{team1.no_of_losses}}</p><hr>
+    <h3>wicket keeper</h3>
+    <p>{{team1.wicket_keeper}}</p><hr>
+    {% endif %}
+
+
+    {% if (session['player'] == True) %}
+    <h1>data</h1>
+    <h3>player Id</h3>
+    <p>{{player1.player_id}}</p><hr>
+    <h3>team name</h3>
+    <p>{{player1.team_name}}</p><hr>
+    <h3>player name</h3>
+    <p>{{player1.player_name}}</p><hr>
+    <h3>age</h3>
+    <p>{{player1.age}}</p><hr>
+    <h3>no of t20</h3>
+    <p>{{player1.no_of_t20}}</p><hr>
+    <h3>playing role</h3>
+    <p>{{player1.playing_role}}</p><hr>
+    <h3>batting style</h3>
+    <p>{{player1.batting_style}}</p><hr>
+    <h3>avg</h3>
+    <p>{{player1.avg}}</p><hr>
+    <h3>total runs</h3>
+    <p>{{player1.total_runs}}</p><hr>
+    <h3>sr</h3>
+    <p>{{player1.sr}}</p><hr>
+    <h3>fifty hundrand</h3>
+    <p>{{player1.fifty_hundrand}}</p><hr>
+    <h3>bowling type</h3>
+    <p>{{player1.bowling_type}}</p><hr>
+    <h3>no of wicket</h3>
+    <p>{{player1.no_of_wicket}}</p><hr>
+    <h3>economy</h3>
+    <p>{{player1.economy}}</p><hr>
+    
+    {% endif %}
+</body>
+</html>
